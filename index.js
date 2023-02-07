@@ -10,7 +10,6 @@ app.get("/", (req, res) => {
 
 app.get("/video", (req, res) => {
   const range = req.headers.range;
-  console.log(range);
 
   if (!range) {
     res.status(400).send("Requires Range header");
