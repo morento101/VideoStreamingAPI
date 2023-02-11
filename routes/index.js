@@ -1,14 +1,14 @@
-const express = require("express");
+var express = require("express");
+var path = require("path");
 const fs = require("fs");
 
-const app = express();
-const port = 3000;
+var router = express.Router();
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+router.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "/views/index.html"));
 });
 
-app.get("/video", (req, res) => {
+router.get("/video", (req, res) => {
   const range = req.headers.range;
 
   if (!range) {
@@ -36,6 +36,4 @@ app.get("/video", (req, res) => {
   videoStream.pipe(res);
 });
 
-app.listen(port, () => {
-  console.log(`Listen on port ${port}`);
-});
+module.exports = router;
