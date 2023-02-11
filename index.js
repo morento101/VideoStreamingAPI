@@ -15,7 +15,7 @@ app.get("/video", (req, res) => {
     res.status(400).send("Requires Range header");
   }
 
-  const videoPath = "video.mp4";
+  const videoPath = "This is America.mp4";
   const videoSize = fs.statSync(videoPath).size;
 
   const CHUNK_SIZE = 10 ** 6;
